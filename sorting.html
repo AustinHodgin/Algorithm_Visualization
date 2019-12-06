@@ -1,99 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Algormithm Visulaization</title>
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <!--Nav Bar-->
-    <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="./index.html">Algorithm Visuliziation</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarText"
-        aria-controls="navbarText"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse in-line" id="navbarText">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link " href="./sorting.html">Sorting</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./pathfinding.html">Pathfinding</a>
-          </li>
-        </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Algormithm Visulaization</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <!--Nav Bar-->
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="./index.html">Algorithm Visuliziation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse in-line" id="navbarText">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link " href="./sorting.html">Sorting</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./pathfinding.html">Pathfinding</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <!--Side Bar-->
+      <div class="text-center col-xs sidebar">
+        <div class="numElements">
+          <label for="numElements">Number of Elements:</label> <br>
+          <input class="form-control " type="number" name="numElements" id="numElements" value="25">
+        </div>
+        <div class="sortingAlgo">
+          <label for="SortAlgo">Sorting Algormithm:</label><br>
+          <select class="text-center" name="algo" id="algo">
+            <option disabled selected value></option>
+            <option value="bubble">Bubble Sort</option>
+            <option value="selection">Selection Sort</option>
+            <!-- <option value="quick">Quick Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="insertion">Insertion Sort</option>
+            <option value="heap">Heap Sort</option> -->
+          </select>
+        </div>
+        <div class="case">
+          <label for="Select">Case: </label> <br>
+          <select class="text-center" name="arrCase" id="arrCase">
+            <option class="text-center" value="average">Average</option>
+            <option class="text-center" value="best">Best</option>
+            <option class="text-center" value="worst">Worst</option>
+          </select>
+        </div>
+        <div class="intervalDiv">
+          <label for="interval">Display Interval (in ms)</label> <br>
+          <input type="number" name="interval" id="interval" value="10">
+        </div>
+        <button class="btn btn-light sortButton">Start Sorting</button>
       </div>
-    </nav>
+      <div class="col-lg">
+        <canvas id="sortingCanvus"></canvas>
+      </div>
 
 
-   <div class="container-fluid">
-     <div class="row">
-       <!--Side Bar-->
-       <div class="text-center col-xs sidebar">
-          <div class="numElements">
-              <label for="numElements">Number of Elements:</label> <br>
-              <input class="form-control " type="number" name="numElements" id="numElements" value="25">
-           </div>
-           <div class="sortingAlgo">
-              <label for="SortAlgo">Sorting Algormithm:</label><br>
-               <select class="text-center" name="algo" id="algo">
-                 <option disabled selected value></option>
-                 <option value="bubble">Bubble Sort</option>
-                 <option value="quick">Quick Sort</option>
-                 <option value="merge">Merge Sort</option>
-                 <option value="insertion">Insertion Sort</option>
-                 <option value="heap">Heap Sort</option>
-               </select>
-          </div>
-          <div class="case">
-            <label for="Select">Case: </label> <br>
-            <select class="text-center" name="arrCase" id="arrCase">
-              <option class="text-center" value="average">Average</option>
-              <option class="text-center" value="best">Best</option>
-              <option class="text-center" value="worst">Worst</option>
-            </select>
-          </div>
-          <div class="intervalDiv">
-              <label for="interval">Display Interval (in ms)</label> <br>
-              <input type="number" name="interval" id="interval" value="10">
-          </div>
-          <button class="btn btn-light sortButton">Start Sorting</button>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="summary">
+          <h1>Summary</h1>
+          <p id="summary"></p>
+          <!-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p> -->
         </div>
-        <div class="col-lg">
-            <canvas id="sortingCanvus"></canvas> 
-        </div>
-         
-       
-     </div>
-     <div class="row">
-       <div class="col">
-          <div class="summary">
-              <h1>Summary</h1>
-              <p id="summary"></p>
-              <!-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p> -->
-            </div>
-       </div>
-       <div class="col">
-         <h1>Code</h1>
-         <p id="code"></p>
-       </div>
-     </div>
-   </div>
+      </div>
+      <div class="col">
+        <h1>Code</h1>
+        <p id="code"></p>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -101,25 +93,19 @@
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      crossorigin="anonymous
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous
     ></script>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-     
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      "
+      src=" https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> </script> <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" "
     ></script>
     <!--File where all the sortting algorims are stored-->
-    <script src="js/sort.js"></script>
-    <!--File where all the jquery is stored--->
+    <script src=" js/sort.js"> </script> <!--File where all the jquery is stored--->
     <script src="./js/sort_jqury.js"></script>
-    <script src="./js/sort_display.js"></script>
+  <script src="./js/sort_display.js"></script>
 
-  </body>
+</body>
+
 </html>

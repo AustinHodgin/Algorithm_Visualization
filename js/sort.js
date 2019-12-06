@@ -29,7 +29,9 @@ var sort = {
     //select the algo that will be run
     switch (algo) {
       case "bubble":
-        this.bubblesort(this.unsortedArray);
+        this.bubbleSort(this.unsortedArray);
+      case "selection":
+        this.selectionSort(this.unsortedArray);
     }
   },
   //create an arry with best (already), worst(reverse sorted), average case arry
@@ -65,7 +67,7 @@ var sort = {
     return arr;
   },
   //sort using bubble sort algorimthm
-  bubblesort: function (unsorted) {
+  bubbleSort: function (unsorted) {
     let sorted = unsorted.slice(0);
     for (let i = 0; i < sorted.length - 1; i++) {
       for (let j = 0; j < sorted.length - i - 1; j++)
@@ -74,6 +76,23 @@ var sort = {
         }
     }
     this.sortedArray = sorted.slice(0);
+  },
+  selectionSort: function (unsorted) {
+    let arr = unsorted.slice(0);
+    console.log("unsorted:", arr)
+    let len = arr.length;
+    for (let i = 0; i < len; i++) {
+      let min = i;
+      for (let j = i + 1; j < len; j++) {
+        if (this.compare(arr, min, j)) {
+          min = j;
+        }
+      }
+      if (min !== i) {
+        this.swap(arr, i, min);
+      }
+    }
+    console.log("sorted:", arr)
   },
 };
 
