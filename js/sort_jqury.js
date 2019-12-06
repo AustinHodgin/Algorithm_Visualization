@@ -1,5 +1,3 @@
-var isRunning = false;
-
 
 //When Start Sorting button is clicked, grab the values in the sidebar menu and start the sortting function to build arry and then sort it.
 $("button").click(function () {
@@ -9,7 +7,7 @@ $("button").click(function () {
   let interval = Number($("#interval").val());
   console.log("interval:", interval);
   sort.init(algo, numElements, arrCase, interval);
-  display.init(sort.actionsArry, sort.unsortedArray, interval);
+  displaySorting(sort.actionsArry, sort.unsortedArray, interval);
 });
 
 //Change the discription of summary and the code snippit when the drop down changes for sorting.
