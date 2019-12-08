@@ -30,8 +30,13 @@ var sort = {
     switch (algo) {
       case "bubble":
         this.bubbleSort(this.unsortedArray);
+        return;
       case "selection":
         this.selectionSort(this.unsortedArray);
+        return;
+      case "insertion":
+        this.insertionSort(this.unsortedArray);
+        return;
     }
   },
   //create an arry with best (already), worst(reverse sorted), average case arry
@@ -78,8 +83,7 @@ var sort = {
     this.sortedArray = sorted.slice(0);
   },
   selectionSort: function (unsorted) {
-    let arr = unsorted.slice(0);
-    console.log("unsorted:", arr)
+    let arr = unsorted.slice(0); //copy arry
     let len = arr.length;
     for (let i = 0; i < len; i++) {
       let min = i;
@@ -92,7 +96,15 @@ var sort = {
         this.swap(arr, i, min);
       }
     }
-    console.log("sorted:", arr)
+  },
+  insertionSort: function (unsorted) {
+    let arr = unsorted.slice(0); //copy arry
+    console.log("unsorted:", arr);
+    for (let i = 1; i < arr.length; i++) {
+      for (let j = i; j > 0 && !this.compare(arr, j, j - 1); j--) {
+        this.swap(arr, j, j - 1);
+      }
+    }
   },
 };
 
