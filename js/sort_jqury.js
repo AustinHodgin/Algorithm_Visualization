@@ -5,7 +5,6 @@ $("button").click(function () {
   let algo = $("#algo option:selected").val();
   let arrCase = $("#arrCase option:selected").val();
   let interval = Number($("#interval").val());
-  console.log("interval:", interval);
   sort.init(algo, numElements, arrCase, interval);
   displaySorting(sort.actionsArry, sort.unsortedArray, interval);
 });

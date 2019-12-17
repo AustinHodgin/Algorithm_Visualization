@@ -26,6 +26,7 @@ var sort = {
     this.sortedArray = [];
     this.actionsArry = [];
     this.unsortedArray = this.createArray(numElements, arrCase);
+    let toMerge = [];
     //select the algo that will be run
     switch (algo) {
       case "bubble":
@@ -36,6 +37,10 @@ var sort = {
         return;
       case "insertion":
         this.insertionSort(this.unsortedArray);
+        return;
+      case "merge":
+        toMerge = this.unsortedArray.slice(0);
+        this.mergeSort(toMerge);
         return;
     }
   },
@@ -62,6 +67,16 @@ var sort = {
     this.actionsArry.push(["compare", i, j]);
     return arr[i] > arr[j];
   },
+
+  compareLessThan: function (arr, i, j) {
+    this.actionsArry.push(["compare", i, j]);
+    return arr[i] < arr[j];
+  },
+
+  compareLessThanEqual: function (arr, i, j) {
+    this.actionsArry.push(["compare", i, j]);
+    return arr[i] <= arr[j];
+  },
   //swap two elements within the given arry
   swap: function (arr, i, j) {
     this.actionsArry.push(["swaped", i, j]);
@@ -73,7 +88,9 @@ var sort = {
   },
   //sort using bubble sort algorimthm
   bubbleSort: function (unsorted) {
+    // console.log("unsorted:", unsorted);
     let sorted = unsorted.slice(0);
+    // console.log("sorted:", sorted);
     for (let i = 0; i < sorted.length - 1; i++) {
       for (let j = 0; j < sorted.length - i - 1; j++)
         if (this.compare(sorted, j, j + 1)) {
@@ -99,11 +116,101 @@ var sort = {
   },
   insertionSort: function (unsorted) {
     let arr = unsorted.slice(0); //copy arry
-    console.log("unsorted:", arr);
     for (let i = 1; i < arr.length; i++) {
       for (let j = i; j > 0 && !this.compare(arr, j, j - 1); j--) {
         this.swap(arr, j, j - 1);
       }
+    }
+  },
+
+  checkPermutations: function (perm) {
+    let size = perm.length;
+    let used = {};
+    for (let i = 0; i < size; i++) {
+      if (used[perm[i]]) {
+        return false;
+      }
+      used[perm[i]] = true;
+    }
+    for (let i = 0; i < size; i++) {
+      if (!used[i]) {
+        return false;
+      }
+    }
+    return false;
+  },
+
+
+  permutationSwap: function (perm) {
+    // if (this.checkPermutations(perm) === false) {
+    //   throw " Invalid permutaion";
+    // }
+    let size = perm.length;
+    let used = [];
+    for (let i = 0; i < size; i++) {
+      used.push(false);
+    }
+    let trans = [];
+    for (let i = 0; i < size; i++) {
+      if (used[i]) continue;
+      let curr = i;
+      if (perm[i] == i) {
+        used[i] = true;
+      }
+      while (!used[perm[curr]]) {
+        trans.push([curr, perm[curr]]);
+        used[curr] = true;
+        curr = perm[curr];
+      }
+    }
+    return trans;
+  },
+
+  mergeSort: function (arr, left, right) {
+    if (typeof left === "undefined") {
+      left = 0;
+    }
+    if (typeof right === "undefined") {
+      right = arr.length - 1;
+    }
+    if (left >= right) {
+      return;
+    }
+    let mid = Math.floor((left + right) / 2);
+
+    if (right - left > 1) {
+      this.mergeSort(arr, left, mid);
+      this.mergeSort(arr, mid + 1, right);
+    }
+    let nextLeft = left;
+    let nextRight = mid + 1;
+    let perm = [];
+    for (let i = left; i <= right; i++) {
+      let choice = null;
+      if (nextLeft <= mid && nextRight <= right) {
+        if (this.compareLessThan(arr, nextLeft, nextRight)) {
+          choice = "L";
+        } else {
+          choice = "R";
+        }
+      } else if (nextLeft > mid) {
+        choice = "R";
+      } else if (nextRight > right) {
+        choice = "L";
+      }
+      if (choice === "L") {
+        perm.push(nextLeft - left);
+        nextLeft++;
+      } else if (choice === "R") {
+        perm.push(nextRight - left);
+        nextRight++;
+      } else {
+        throw "NO PERMUTATIONS";
+      }
+    }
+    let swaps = this.permutationSwap(perm);
+    for (let i = 0; i < swaps.length; i++) {
+      this.swap(arr, swaps[i][0] + left, swaps[i][1] + left);
     }
   },
 };
