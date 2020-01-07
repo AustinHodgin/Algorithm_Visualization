@@ -35,28 +35,24 @@
   <div class="container-fluid">
     <div class="row">
       <!--Side Bar-->
-      <div class="text-center col-xs sidebar">
+      <div class="text-center col-xs-12 col-xl-2 sidebar">
         <div class="numElements">
           <label for="numElements">Number of Elements:</label> <br>
           <input class="form-control " type="number" name="numElements" id="numElements" value="25">
         </div>
         <div class="sortingAlgo">
           <label for="SortAlgo">Sorting Algormithm:</label><br>
-          <select class="text-center" name="algo" id="algo">
+          <select class="text-center form-control" name="algo" id="algo">
             <option disabled selected value></option>
             <option value="bubble">Bubble Sort</option>
             <option value="selection">Selection Sort</option>
             <option value="insertion">Insertion Sort</option>
             <option value="merge">Merge Sort</option>
-            <!-- <option value="quick">Quick Sort</option>
-            
-            
-            <option value="heap">Heap Sort</option> -->
           </select>
         </div>
         <div class="case">
           <label for="Select">Case: </label> <br>
-          <select class="text-center" name="arrCase" id="arrCase">
+          <select class="text-center form-control" name="arrCase" id="arrCase">
             <option class="text-center" value="average">Average</option>
             <option class="text-center" value="best">Best</option>
             <option class="text-center" value="worst">Worst</option>
@@ -64,22 +60,21 @@
         </div>
         <div class="intervalDiv">
           <label for="interval">Display Interval (in ms)</label> <br>
-          <input type="number" name="interval" id="interval" value="10">
+          <input class="form-control" type="number" name="interval" id="interval" value="10">
         </div>
         <button class="btn btn-light sortButton">Start Sorting</button>
       </div>
       <div class="col-lg">
         <canvas id="sortingCanvus"></canvas>
       </div>
-
-
     </div>
+    <div class="row"></div>
     <div class="row">
       <div class="col">
         <div class="summary">
           <h1>Summary</h1>
           <p id="summary"></p>
-          <!-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p> -->
+          <p ><strong id="complexity"></strong></p>
         </div>
       </div>
       <div class="col">

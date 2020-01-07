@@ -34,6 +34,10 @@ body {
   display: flex;
 }
 
+.sortButton {
+  padding: 10px;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -44,4 +48,12 @@ canvas {
   border: 1px solid #000000;
   height: 600px;
   width: 800px;
+}
+
+.sidebar {
+  padding: 10px;
+}
+
+#code {
+  white-space: pre;
 }

@@ -6,8 +6,6 @@
  *
  ******************************************************************/
 
-
-
 //global var to see if something is already running
 var runInterval;
 
@@ -26,6 +24,8 @@ function displaySorting(actionArr, unsortedArr, interval) {
 
   //set contex
   var c = canvas.getContext("2d");
+
+  c.width = Window.innerWidth;
 
   //translate the y to the bottom left and inverts the y values
   c.translate(0, canvas.height);
@@ -108,7 +108,7 @@ function displaySorting(actionArr, unsortedArr, interval) {
       clearInterval(runInterval);
     }
     clearInterval(runInterval);
-    runInterval = setInterval(function () {
+    runInterval = setInterval(function() {
       if (actionArr.length === 0) {
         colors = buildColorsArry(actionArr, arr, spacing, barWidth);
         drawArry(arr, colors, spacing, barWidth);
