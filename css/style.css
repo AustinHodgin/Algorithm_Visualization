@@ -35,7 +35,10 @@ body {
 }
 
 .sortButton {
-  padding: 10px;
+  padding-top: 15px;
+}
+.pathButton {
+  margin: 10px;
 }
 
 .sidebar {
@@ -56,4 +59,20 @@ canvas {
 
 #code {
   white-space: pre;
+}
+
+.red-line {
+  border: 1px solid #f00;
+  background: #f00;
+  display: block;
+}
+.blue-line {
+  border: 1px solid #00f;
+  background: #f00;
+  display: block;
+}
+.green-line {
+  border: 1px solid #0f0;
+  background: #f00;
+  display: block;
 }

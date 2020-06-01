@@ -30,8 +30,8 @@
       </button>
       <div class="collapse navbar-collapse in-line" id="navbarText">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
-            <a class="nav-link " href="./sorting.html">Sorting</a>
+          <li class="nav-item">
+            <a class="nav-link" href="./sorting.html">Sorting</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="./pathfinding.html">Pathfinding</a>
@@ -39,8 +39,62 @@
         </ul>
       </div>
     </nav>
-    <div class="container justify-content-center">
-      <h1 class="justifiy-content-center">PathfindingComing Soon!</h1>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!--Start Sidebar-->
+        <div class="text-center col-xs-12 col-md-4 sidebar">
+          <div class="sortingAlgo">
+            <label for="SortAlgo">Pathfinding Algormithm:</label><br />
+            <select class="text-center form-control" name="algo" id="algo">
+              <option value="bubble">Breath First</option>
+              <option value="selection">Depth First</option>
+            </select>
+          </div>
+          <div class="intervalDiv">
+            <label for="interval">Display Interval (in ms)</label> <br />
+            <input
+              class="form-control"
+              type="number"
+              name="interval"
+              id="interval"
+              value="10"
+            />
+          </div>
+          <div class="btn-group settingsOptions">
+            <button class="btn btn-light pathButton">
+              <span class="green-line"></span>
+              Select Starting Point
+            </button>
+            <button class="btn btn-light pathButton">
+              <span class="red-line"></span>Select Ending point
+            </button>
+            <button class="btn btn-light pathButton">
+              <span class="blue-line"></span>Random Walls
+            </button>
+          </div>
+          <button class="btn btn-light pathButton">Start Pathfinding</button>
+        </div>
+        <!--End Sidebar-->
+      </div>
+      <!-- start Grid-->
+      <div class="col-lg grid"></div>
+      <!--End Grid-->
+      <!--Start Summary-->
+      <div class="row">
+        <div class="col">
+          <div class="summary">
+            <h1><u>Summary</u></h1>
+            <p id="summary"></p>
+            <p><strong id="complexity"></strong></p>
+          </div>
+        </div>
+        <div class="col">
+          <h1><u>Pseudo Code</u></h1>
+          <p id="code"></p>
+        </div>
+      </div>
+      <!--End Summary-->
     </div>
 
     <!-- Optional JavaScript -->
