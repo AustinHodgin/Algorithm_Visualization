@@ -76,3 +76,17 @@ canvas {
   background: #f00;
   display: block;
 }
+
+table,
+th,
+td {
+  table-layout: fixed;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+td {
+  width: 50px;
+  height: 30px;
+}
