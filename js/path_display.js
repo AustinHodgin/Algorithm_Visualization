@@ -5,10 +5,10 @@ function createGrid() {
   let grid = document.getElementById("grid");
   let tablebody = document.createElement("tbody");
 
-  for (let i = 0; i <= GRID_ROWS; i++) {
+  for (let i = 0; i < GRID_ROWS; i++) {
     let row = document.createElement("tr");
 
-    for (let j = 0; j <= GRID_COLS; j++) {
+    for (let j = 0; j < GRID_COLS; j++) {
       let cell = document.createElement("td");
       cell.setAttribute("id", i + " " + j);
       //let cellText = document.createTextNode(i + " " + j);
