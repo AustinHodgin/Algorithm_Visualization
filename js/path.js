@@ -122,12 +122,16 @@ class Grid {
     }
   }
 
-  setWall(cellID) {
+  toggleWall(cellID) {
     if (cellID !== mainGrid.endID && cellID !== mainGrid.startID) {
       let i = cellID.split(" ")[0];
       let j = cellID.split(" ")[1];
       let newWall = this.grid[i][j];
-      newWall.setType("WALL", newWall.htmlCell);
+      if (newWall.type == "WALL") {
+        newWall.setType("", newWall.htmlCell);
+      } else {
+        newWall.setType("WALL", newWall.htmlCell);
+      }
     }
   }
   addOnClick() {
@@ -137,7 +141,7 @@ class Grid {
           let id = event.target.id.split(" ");
           let i = parseInt(id[0]);
           let j = parseInt(id[1]);
-          this.setWall(this.grid[i][j].cellID);
+          this.toggleWall(this.grid[i][j].cellID);
         }.bind(this);
       }
     }
