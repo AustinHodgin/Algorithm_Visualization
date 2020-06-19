@@ -148,12 +148,10 @@ class Grid {
   addRandomWalls() {
     //number of walls to be added
     let numofWalls = Math.floor(Math.random() * 50);
-    let randomI = Math.floor(Math.random() * 20);
-    let randomJ = Math.floor(Math.random() * 20);
 
     for (let i = 0; i < numofWalls; i++) {
-      randomI = Math.floor(Math.random() * 20);
-      randomJ = Math.floor(Math.random() * 20);
+      let randomI = Math.floor(Math.random() * 20);
+      let randomJ = Math.floor(Math.random() * 20);
       if (
         this.grid[randomI][randomJ].type !== "WALL" &&
         this.grid[randomI][randomJ].type !== "START" &&

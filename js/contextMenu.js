@@ -107,6 +107,8 @@ function menuItemListener(link) {
     mainGrid.setEnd(gridItemID);
   } else if (gridItemAction === "wall") {
     mainGrid.toggleWall(gridItemID);
+  } else if (gridItemAction === "randomWalls") {
+    mainGrid.addRandomWalls();
   }
   toggleMenuOff();
 }
