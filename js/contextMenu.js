@@ -101,13 +101,12 @@ function clickInsideElement(e, className) {
 function menuItemListener(link) {
   let gridItemID = gridItemInContext.getAttribute("id");
   let gridItemAction = link.getAttribute("data-action");
-  console.log(gridItemID);
   if (gridItemAction === "start") {
-    console.log("Going to run start code!");
+    mainGrid.setStart(gridItemID);
   } else if (gridItemAction === "end") {
-    console.log("Going to run end code!");
+    mainGrid.setEnd(gridItemID);
   } else if (gridItemAction === "wall") {
-    console.log("Going to run wall code!");
+    mainGrid.setWall(gridItemID);
   }
   toggleMenuOff();
 }

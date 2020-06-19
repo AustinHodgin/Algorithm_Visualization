@@ -81,7 +81,6 @@ class Grid {
       for (let j = 0; j < GRID_SIZE; j++) {
         let cellID = `${i} ${j}`;
         let htmlCell = document.getElementById(cellID);
-
         if (i === startI && j === startJ) {
           this.grid[i][j] = new Cell(cellID, "START", htmlCell);
           this.startID = cellID;
@@ -95,23 +94,42 @@ class Grid {
     }
   }
 
-  toggleCellWall(cell, gridObj) {
-    let type = cell.type;
-
-    let grid = gridObj.grid;
-    let startID = gridObj.startID.split(" ");
-    let endID = gridObj.endID.split(" ");
-
-    switch (type) {
-      case "DEFAULT":
-        cell.setType("WALL", cell.htmlCell);
-        break;
-      case "WALL":
-        cell.setType("Defualt", cell.htmlCell);
-        break;
+  setStart(cellID) {
+    if (cellID !== mainGrid.endID && cellID !== mainGrid.startID) {
+      let i = cellID.split(" ")[0];
+      let j = cellID.split(" ")[1];
+      let orginalStartI = this.startID.split(" ")[0];
+      let orginalStartJ = this.startID.split(" ")[1];
+      let newStartCell = this.grid[i][j];
+      let orginalStartCell = this.grid[orginalStartI][orginalStartJ];
+      newStartCell.setType("START", newStartCell.htmlCell);
+      orginalStartCell.setType("", orginalStartCell.htmlCell);
+      this.startID = cellID;
     }
   }
 
+  setEnd(cellID) {
+    if (cellID !== mainGrid.endID && cellID !== mainGrid.startID) {
+      let i = cellID.split(" ")[0];
+      let j = cellID.split(" ")[1];
+      let orginalEndI = this.endID.split(" ")[0];
+      let orginalEndJ = this.endID.split(" ")[1];
+      let newEndCell = this.grid[i][j];
+      let orginalEndCell = this.grid[orginalEndI][orginalEndJ];
+      newEndCell.setType("END", newEndCell.htmlCell);
+      orginalEndCell.setType("", orginalEndCell.htmlCell);
+      this.endID = cellID;
+    }
+  }
+
+  setWall(cellID) {
+    if (cellID !== mainGrid.endID && cellID !== mainGrid.startID) {
+      let i = cellID.split(" ")[0];
+      let j = cellID.split(" ")[1];
+      let newWall = this.grid[i][j];
+      newWall.setType("WALL", newWall.htmlCell);
+    }
+  }
   addOnClick() {
     for (let i = 0; i < GRID_SIZE; i++) {
       for (let j = 0; j < GRID_SIZE; j++) {
@@ -119,14 +137,14 @@ class Grid {
           let id = event.target.id.split(" ");
           let i = parseInt(id[0]);
           let j = parseInt(id[1]);
-          this.toggleCellWall(this.grid[i][j], this);
+          this.setWall(this.grid[i][j].cellID);
         }.bind(this);
       }
     }
   }
 }
 
-let firstGrid = new Grid();
+let mainGrid = new Grid();
 
-firstGrid.crateGrid();
-firstGrid.addOnClick();
+mainGrid.crateGrid();
+mainGrid.addOnClick();
