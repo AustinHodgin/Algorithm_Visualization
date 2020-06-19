@@ -135,6 +135,16 @@ class Grid {
     }
   }
 
+  clearWalls() {
+    for (let i = 0; i < GRID_SIZE; i++) {
+      for (let j = 0; j < GRID_SIZE; j++) {
+        if (this.grid[i][j].type == "WALL") {
+          this.toggleWall(this.grid[i][j].cellID);
+        }
+      }
+    }
+  }
+
   addOnClick() {
     for (let i = 0; i < GRID_SIZE; i++) {
       for (let j = 0; j < GRID_SIZE; j++) {
