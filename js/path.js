@@ -138,9 +138,28 @@ class Grid {
   clearWalls() {
     for (let i = 0; i < GRID_SIZE; i++) {
       for (let j = 0; j < GRID_SIZE; j++) {
-        if (this.grid[i][j].type == "WALL") {
+        if (this.grid[i][j].type === "WALL") {
           this.toggleWall(this.grid[i][j].cellID);
         }
+      }
+    }
+  }
+
+  addRandomWalls() {
+    //number of walls to be added
+    let numofWalls = Math.floor(Math.random() * 50);
+    let randomI = Math.floor(Math.random() * 20);
+    let randomJ = Math.floor(Math.random() * 20);
+
+    for (let i = 0; i < numofWalls; i++) {
+      randomI = Math.floor(Math.random() * 20);
+      randomJ = Math.floor(Math.random() * 20);
+      if (
+        this.grid[randomI][randomJ].type !== "WALL" &&
+        this.grid[randomI][randomJ].type !== "START" &&
+        this.grid[randomI][randomJ].type !== "END"
+      ) {
+        this.toggleWall(this.grid[randomI][randomJ].cellID);
       }
     }
   }
