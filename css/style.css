@@ -68,8 +68,8 @@ canvas {
   background: #f00;
   display: block;
 }
-.blue-line {
-  border: 1px solid #00f;
+.gray-line {
+  border: 1px solid gray;
   background: #f00;
   display: block;
 }
