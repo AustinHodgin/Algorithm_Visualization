@@ -11,6 +11,7 @@ function createGrid() {
     for (let j = 0; j < GRID_COLS; j++) {
       let cell = document.createElement("td");
       cell.setAttribute("id", i + " " + j);
+      cell.setAttribute("class", "gridItem");
       //let cellText = document.createTextNode(i + " " + j);
       let cellText = document.createTextNode(" ");
       cell.appendChild(cellText);
