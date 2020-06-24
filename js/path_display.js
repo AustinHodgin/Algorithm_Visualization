@@ -23,4 +23,15 @@ function createGrid() {
   grid.setAttribute("border", 2);
 }
 
+function turnOffButtons() {
+  document.getElementById("randomWalls").disabled = true;
+  document.getElementById("clearWalls").disabled = true;
+  document.getElementById("start").disabled = true;
+}
+function turnOnButtons() {
+  document.getElementById("randomWalls").disabled = false;
+  document.getElementById("clearWalls").disabled = false;
+  document.getElementById("start").disabled = false;
+}
+
 createGrid();

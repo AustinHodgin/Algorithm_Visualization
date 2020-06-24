@@ -47,8 +47,8 @@
           <div class="sortingAlgo">
             <label for="SortAlgo">Pathfinding Algormithm:</label><br />
             <select class="text-center form-control" name="algo" id="algo">
-              <option value="bubble">Breath First</option>
-              <option value="selection">Depth First</option>
+              <option value="BreathFirst">Breath First</option>
+              <option value="DepthFirst">Depth First</option>
             </select>
           </div>
           <div class="intervalDiv">
@@ -63,18 +63,31 @@
           </div>
           <div class="btn-group settingsOptions">
             <button
+              id="randomWalls"
               class="btn btn-light pathButton"
               onclick="mainGrid.addRandomWalls()"
             >
               <span class="gray-line"></span>Random Walls
             </button>
+
             <button
+              id="clearWalls"
               class="btn btn-light pathButton"
               onclick="mainGrid.clearWalls()"
             >
               <span class="gray-line"></span>Clear Walls
             </button>
-            <button class="btn btn-light pathButton">Start Pathfinding</button>
+
+            <button
+              id="clearWalls"
+              class="btn btn-light pathButton"
+              onclick="mainGrid.resetGrid()"
+            >
+              Reset Grid
+            </button>
+            <button id="start" class="btn btn-light pathButton">
+              Start Pathfinding
+            </button>
           </div>
         </div>
         <!--End Sidebar-->
