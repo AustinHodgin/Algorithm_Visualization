@@ -6,7 +6,7 @@ $("#start").click(function () {
   if (algo === "BreathFirst") {
     mainGrid.breadthFirst(interval);
   } else if (algo === "DepthFirst") {
-    console.log("Depth First!");
+    mainGrid.depthFirst(interval);
   }
 });
 

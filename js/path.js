@@ -302,6 +302,40 @@ class Grid {
         clearInterval(step);
       }
     }, interval);
+    turnOnButtons();
+  }
+
+  depthFirst(interval) {
+    this.resetGrid();
+    turnOffButtons();
+    let search = [];
+    let path = [];
+    let startID = this.getCellPostion(this.startID);
+    search.push(this.grid[startID[0]][startID[1]]);
+
+    step = window.setInterval(function () {
+      let node = search.pop(); // get first node;
+      path.push(node);
+      if (node.type === "DEFAULT") {
+        node.setType("VISITED", node.htmlCell);
+      }
+      if (node.type === "END") {
+        clearInterval(step);
+        //found the node, send path
+        let finalPath = mainGrid.backTrace(node);
+        mainGrid.displayPath(finalPath);
+        turnOnButtons();
+      } else {
+        let neighbors = mainGrid.findNeighbors(node, search);
+        search = search.concat(neighbors); // add neighbors to list if not wall, or already visited
+      }
+      if (search.length === 0) {
+        alert("No path found");
+        turnOnButtons();
+        clearInterval(step);
+      }
+    }, interval);
+    turnOnButtons();
   }
 
   resetGrid() {
