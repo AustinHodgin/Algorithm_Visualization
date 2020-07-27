@@ -12,9 +12,10 @@ $("#start").click(function () {
 
 //Change the discription of summary and the code snippit when the drop down changes for sorting.
 $("#algo").change(function () {
-  //   var selectedAlgo = $("#algo option:selected").val();
-  //   var summaryText = "";
-  //   var codeText = "";
+  let selectedAlgo = $("#algo option:selected").val();
+  let summaryText = "";
+  let codeText = "";
+  let complexityText = "";
   //   if (selectedAlgo === "bubble") {
   //     summaryText =
   //       "Bubble sort is a simple sorting algorithm that looks at the first element and compares it to the element to the right. If it is larger then it will swap the two elements and then move on to the next element. This compairison is done until it finds an element smaller then it. It will then start over at the begining. This proccess is repeted until the arry is sorted.";
@@ -40,7 +41,11 @@ $("#algo").change(function () {
   //       "InsertionSort(array): \n   for j = 2 to n: \n     key = array[j] \n      insert array[j] \n     i = j - 1\n     while i > 0 and array[i] > key:\n       do array[i+1] = array[i]\n        i = i -1 \n     array[i+1] = key";
   //     complexityText = "Complexity: O(n^2)";
   //   }
-  //   $("#summary").text(summaryText);
-  //   $("#complexity").text(complexityText);
-  //   $("#code").text(codeText);
+  $("#summary").text(summaryText);
+  $("#complexity").text(complexityText);
+  $("#code").text(codeText);
+});
+
+$(window).on("load", function () {
+  $("#PathModal").modal("show");
 });

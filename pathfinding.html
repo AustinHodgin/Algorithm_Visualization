@@ -41,6 +41,142 @@
     </nav>
 
     <div class="container-fluid">
+      <!-- Modal -->
+
+      <div
+        class="modal fade"
+        id="PathModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog modal-dialog-centered modal-lg"
+          role="document"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalInstructionTittle">
+                Instructions
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h6>Page Summary:</h6>
+              <p>
+                This page shows several diffrent pathfinding algorithms such as
+                Breath first and Depth first algorithms. These can be selected
+                in the menu to the left of grid. You can also select the
+                interval which it will complete step of the algorithm. the
+                smaller the faster it will go. Once you have an algorithm and
+                time interval selected you can choose to add walls or change the
+                start and end postion within the grid. You can choose to create
+                walls yourself or to have random walls put within the grid. Once
+                you are happy with the settings for the pathfinding click on the
+                "Start Pathfinding" button to visuallize the selected
+                pathfinding algorithm. If you wish to see this set of
+                instructions again press the Instructions button above the
+                control buttons.
+              </p>
+              <h6>Key:</h6>
+              <div>
+                <p><span class="modal-key-green"> </span> Starting point</p>
+                <p><span class="modal-key-red"> </span> End point</p>
+                <p><span class="modal-key-gray"> </span> Wall</p>
+                <p><span class="modal-key-yellow"> </span> Visited</p>
+                <p><span class="modal-key-blue"> </span> Path</p>
+              </div>
+
+              <h6>How To Set Start:</h6>
+              <p>
+                To set the starting point right click on the cell you wish to be
+                the starting point to bring up the custom context window and
+                select "Set Start".
+              </p>
+              <p>
+                <img
+                  class="modal_gif"
+                  src="/gifs/Set_Start_Gif.gif"
+                  alt="Gif of setting start"
+                />
+              </p>
+
+              <h6>How To Set End:</h6>
+              <p>
+                To set the starting point right click on the cell you wish to be
+                the end point point to bring up the custom context window and
+                select "Set End".
+              </p>
+              <p>
+                <img
+                  class="modal_gif"
+                  src="/gifs/Set_End_Gif.gif"
+                  alt="Gif of setting start"
+                />
+              </p>
+              <h6>How to Set Individual Walls:</h6>
+              <p>
+                You can create walls in the grid in two diffrent ways. The first
+                way is to click a cell you wish to be a wall. The second way is
+                to right click on a cell and select "Toggle Wall" in the custom
+                context menu. If you wish to remove a wall you can either click
+                the cell again or right click and select "Toggle Wall". If you
+                wish to remove all walls you can click on the "Clear Walls".
+              </p>
+              <p>
+                <img
+                  class="modal_gif"
+                  src="/gifs/Set_Wall_Gif.gif"
+                  alt="Gif of setting start"
+                />
+              </p>
+              <h6>How to Set Random Walls</h6>
+              <p>
+                You can create Random walls in the grid in two diffrent ways.
+                The first way is by clicking the "Random Walls" button in the
+                side panal left of the grid. The second way is to right click on
+                a cell and select "Random Wall" in the custom context menu. If
+                you wish to remove a wall you can either click the cell again or
+                right click and select "Toggle Wall".
+              </p>
+              <p>
+                <img
+                  class="modal_gif"
+                  src="/gifs/Set_Random_Wall_Gif.gif"
+                  alt="Gif of setting start"
+                />
+              </p>
+              <h6>Reset Grid:</h6>
+              <p>
+                To reset the grid to the defalut state you can press the button
+                "Reset Grid". This will reset the grid removing the walls and
+                returning the start and end postions to the original postions.
+              </p>
+              <h6></h6>
+              <h6></h6>
+              <p></p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <!--Start Sidebar-->
         <div class="text-center col-xs-12 col-md-4 sidebar">
@@ -61,35 +197,49 @@
               value="10"
             />
           </div>
-          <div class="btn-group settingsOptions">
+
+          <div class="buttonGroup">
+            <!-- Button trigger modal -->
             <button
-              id="randomWalls"
+              type="button"
               class="btn btn-light pathButton"
-              onclick="mainGrid.addRandomWalls()"
+              data-toggle="modal"
+              data-target="#PathModal"
             >
-              <span class="gray-line"></span>Random Walls
+              Instructions
             </button>
 
-            <button
-              id="clearWalls"
-              class="btn btn-light pathButton"
-              onclick="mainGrid.clearWalls()"
-            >
-              <span class="gray-line"></span>Clear Walls
-            </button>
+            <div class="btn-group settingsOptions">
+              <button
+                id="randomWalls"
+                class="btn btn-light pathButton"
+                onclick="mainGrid.addRandomWalls()"
+              >
+                <span class="gray-line"></span>Random Walls
+              </button>
 
-            <button
-              id="clearWalls"
-              class="btn btn-light pathButton"
-              onclick="mainGrid.resetGrid()"
-            >
-              Reset Grid
-            </button>
-            <button id="start" class="btn btn-light pathButton">
-              Start Pathfinding
-            </button>
+              <button
+                id="clearWalls"
+                class="btn btn-light pathButton"
+                onclick="mainGrid.clearWalls()"
+              >
+                <span class="gray-line"></span>Clear Walls
+              </button>
+
+              <button
+                id="clearWalls"
+                class="btn btn-light pathButton"
+                onclick="mainGrid.resetGrid()"
+              >
+                Reset Grid
+              </button>
+              <button id="start" class="btn btn-light pathButton">
+                Start Pathfinding
+              </button>
+            </div>
           </div>
         </div>
+
         <!--End Sidebar-->
         <!-- start Grid-->
         <div class="col-lg grid" id="grid" class="grid"></div>

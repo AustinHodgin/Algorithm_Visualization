@@ -137,3 +137,59 @@ td {
   color: #fff;
   background-color: #0066aa;
 }
+
+.modal-content {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: 0.05rem solid #fff;
+  position: relative;
+}
+
+.modal-content h6 {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+img.modal_gif {
+  width: 90%;
+  height: 80%;
+}
+
+.modal-key-green {
+  float: left;
+  margin: 5px;
+  height: 20px;
+  width: 20px;
+  background-color: green;
+}
+.modal-key-red {
+  float: left;
+  margin: 5px;
+  height: 20px;
+  width: 20px;
+  background-color: red;
+}
+
+.modal-key-gray {
+  float: left;
+  margin: 5px;
+  height: 20px;
+  width: 20px;
+  background-color: gray;
+}
+
+.modal-key-yellow {
+  float: left;
+  margin: 5px;
+  height: 20px;
+  width: 20px;
+  background-color: yellow;
+}
+.modal-key-blue {
+  float: left;
+  margin: 5px;
+  height: 20px;
+  width: 20px;
+  background-color: blue;
+}
