@@ -183,6 +183,7 @@
           <div class="sortingAlgo">
             <label for="SortAlgo">Pathfinding Algormithm:</label><br />
             <select class="text-center form-control" name="algo" id="algo">
+              <option hidden selected value> -- Select an Option --</option>
               <option value="BreathFirst">Breath First</option>
               <option value="DepthFirst">Depth First</option>
             </select>
@@ -231,7 +232,7 @@
                 class="btn btn-light pathButton"
                 onclick="mainGrid.resetGrid()"
               >
-                Reset Grid
+                Stop Pathfinding
               </button>
               <button id="start" class="btn btn-light pathButton">
                 Start Pathfinding
